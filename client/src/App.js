@@ -1,16 +1,27 @@
-import "./App.css";
+import "./styles/App.css";
 import { Table } from "./components/Table";
-import { TextBox } from "./components/Textbox";
+import { Home } from "./components/Home";
 import { useState } from "react";
+import { ButtonHome } from "./components/ButtonHome";
+// import { Home } from "./components/Home";
 
 function App() {
   const [characterName, setCharacterName] = useState("");
   return (
     <div className="App">
       {characterName === "" ? (
-        <TextBox setCharacter={setCharacterName} />
+        <Home
+          characterName={characterName}
+          setCharacterName={setCharacterName}
+        />
       ) : (
-        <Table character={characterName} setCharacter={setCharacterName} />
+        <div>
+          <ButtonHome setCharacterName={setCharacterName} />
+          <Table
+            characterName={characterName}
+            setCharacterName={setCharacterName}
+          />
+        </div>
       )}
     </div>
   );
