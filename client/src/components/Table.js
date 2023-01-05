@@ -4,7 +4,7 @@ import "../styles/Table.css";
 
 const GET_INFO = gql`
   query GetInfo($character_name: String!) {
-    character(character_name: $character_name) {
+    characters(character_name: $character_name) {
       name
       films
       vehicles
@@ -25,47 +25,45 @@ export const Table = (props) => {
     return <p>Error : {error.message}</p>;
   }
 
-  let rowCount = 0;
-
-  if (data.character !== null) {
-    rowCount = Math.max(
-      data.character.films.length,
-      data.character.vehicles.length
-    );
-  }
-
   return (
     <>
-      {data.character === null ? (
+      {data.characters.length === 0 ? (
         <p>Character does not exist. Please try again!</p>
       ) : (
-        <div className="table-container">
-          <h2 className="table-title">{data.character.name}</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Films</th>
-                <th>Vehicle Models</th>
-              </tr>
-            </thead>
-            <tbody>
-              {Array.from({ length: rowCount }).map((_, index) => (
-                <tr key={index}>
-                  <td>
-                    {index < data.character.films.length
-                      ? data.character.films[index]
-                      : ""}
-                  </td>
-                  <td>
-                    {index < data.character.vehicles.length
-                      ? data.character.vehicles[index]
-                      : ""}
-                  </td>
+        data.characters.map((character) => (
+          <div className="table-container">
+            <h2 className="table-title">{character.name}</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Films</th>
+                  <th>Vehicle Models</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {Array.from({
+                  length: Math.max(
+                    character.films.length,
+                    character.vehicles.length
+                  ),
+                }).map((_, index) => (
+                  <tr key={index}>
+                    <td>
+                      {index < character.films.length
+                        ? character.films[index]
+                        : ""}
+                    </td>
+                    <td>
+                      {index < character.vehicles.length
+                        ? character.vehicles[index]
+                        : ""}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ))
       )}
     </>
   );

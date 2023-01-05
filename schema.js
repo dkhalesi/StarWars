@@ -33,15 +33,15 @@ const CharacterType = new GraphQLObjectType({
 const RootQueryType = new GraphQLObjectType({
   name: "RootQueryType",
   fields: {
-    character: {
-      type: CharacterType,
+    characters: {
+      type: new GraphQLList(CharacterType),
       args: {
         character_name: { type: GraphQLString },
       },
       resolve: (parent, args) => {
         return axios
           .get(`https://swapi.dev/api/people/?search=${args.character_name}`)
-          .then((res) => res.data.results[0]);
+          .then((res) => res.data.results);
       },
     },
   },
