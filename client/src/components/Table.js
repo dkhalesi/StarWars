@@ -51,12 +51,12 @@ export const Table = (props) => {
                     <td>
                       {index < character.films.length
                         ? character.films[index]
-                        : ""}
+                        : "N/A"}
                     </td>
                     <td>
                       {index < character.vehicles.length
                         ? character.vehicles[index]
-                        : ""}
+                        : "N/A"}
                     </td>
                   </tr>
                 ))}

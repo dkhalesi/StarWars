@@ -10,7 +10,6 @@
   opacity: 0.8;
   padding: 2.5%;
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   align-items: center;
