@@ -1,5 +1,5 @@
 # Star Wars Trivia
-In a metaverse far far away... A Star Wars super fan has to prepare for their weekly trivia night. Here is the tool that will help you unlock supreme Star Wars knowledge that will send your opponents to another dimension!
+In a metaverse far far away... A Star Wars super fan has to prepare for their weekly trivia night. Here is the tool that will help you unlock supreme Star Wars knowledge that will send your opponents to another galaxy!
 
 # How it Works
 
