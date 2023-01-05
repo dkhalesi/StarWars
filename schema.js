@@ -23,7 +23,7 @@ const CharacterType = new GraphQLObjectType({
       type: new GraphQLList(GraphQLString),
       resolve: (parent) => {
         return parent.vehicles.map((url) =>
-          axios.get(url).then((res) => res.data.name)
+          axios.get(url).then((res) => res.data.model)
         );
       },
     },
