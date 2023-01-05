@@ -3,7 +3,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 10%;
 }
 .container {
   width: 50%;
@@ -18,13 +17,6 @@
   gap: 2rem;
   border-radius: 10px;
 }
-
-.texth1 {
-  font-size: 6rem;
-  padding-bottom:4%;
-  color: #FFE81F;
-  
-} 
 
 .texth3 {
     text-align: center;

@@ -1,6 +1,5 @@
 import { useQuery, gql } from "@apollo/client";
 import "../styles/Table.css";
-import { Textbox } from "./Textbox";
 
 const GET_INFO = gql`
   query GetInfo($character_name: String!) {
@@ -27,12 +26,7 @@ export const Table = (props) => {
 
   return (
     <div className="table-container">
-      <h1 className="table-title">{data.character.name}</h1>
-      <Textbox
-        characterName={props.characterName}
-        setCharacterName={props.setCharacterName}
-      />
-      <button></button>
+      <h2 className="table-title">{data.character.name}</h2>
       <table>
         <thead>
           <tr>

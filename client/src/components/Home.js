@@ -5,7 +5,6 @@ import { Textbox } from "./Textbox";
 export const Home = (props) => {
   return (
     <div className="flex">
-      <h1 className="texth1">Star Wars Trivia</h1>
       <div className="container">
         <h3 className="texth3">
           In a metaverse far far away... A Star Wars super fan has to prepare
