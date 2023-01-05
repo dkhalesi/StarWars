@@ -37,3 +37,8 @@ th {
 tr:nth-child(ODD) td {
     background: #403c3c;
 }
+
+.loadingGif {
+    max-width:100px;
+    height: auto;
+}

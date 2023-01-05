@@ -1,4 +1,5 @@
 import { useQuery, gql } from "@apollo/client";
+import loadingGif from "../assets/loading.gif";
 import "../styles/Table.css";
 
 const GET_INFO = gql`
@@ -16,41 +17,56 @@ export const Table = (props) => {
     variables: { character_name: props.characterName },
   });
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error : {error.message}</p>;
+  if (loading) {
+    return <img src={loadingGif} alt="loading..." className="loadingGif" />;
+  }
 
-  const rowCount = Math.max(
-    data.character.films.length,
-    data.character.vehicles.length
-  );
+  if (error) {
+    return <p>Error : {error.message}</p>;
+  }
+
+  let rowCount = 0;
+
+  if (data.character !== null) {
+    rowCount = Math.max(
+      data.character.films.length,
+      data.character.vehicles.length
+    );
+  }
 
   return (
-    <div className="table-container">
-      <h2 className="table-title">{data.character.name}</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Films</th>
-            <th>Vehicle Models</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Array.from({ length: rowCount }).map((_, index) => (
-            <tr key={index}>
-              <td>
-                {index < data.character.films.length
-                  ? data.character.films[index]
-                  : ""}
-              </td>
-              <td>
-                {index < data.character.vehicles.length
-                  ? data.character.vehicles[index]
-                  : ""}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <>
+      {data.character === null ? (
+        <p>Character does not exist. Please try again!</p>
+      ) : (
+        <div className="table-container">
+          <h2 className="table-title">{data.character.name}</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Films</th>
+                <th>Vehicle Models</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Array.from({ length: rowCount }).map((_, index) => (
+                <tr key={index}>
+                  <td>
+                    {index < data.character.films.length
+                      ? data.character.films[index]
+                      : ""}
+                  </td>
+                  <td>
+                    {index < data.character.vehicles.length
+                      ? data.character.vehicles[index]
+                      : ""}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </>
   );
 };
