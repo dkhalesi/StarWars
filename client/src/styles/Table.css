@@ -17,6 +17,7 @@ table{
     border-collapse: collapse;
     width: 100%;
     background-color: #282424;
+    height: fit-content;
 }
 
 th,td {
@@ -41,4 +42,13 @@ tr:nth-child(ODD) td {
 .loadingGif {
     max-width:100px;
     height: auto;
+}
+
+.table-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    width:100%;
+    gap: 5rem;
 }

@@ -33,35 +33,50 @@ export const Table = (props) => {
         data.characters.map((character) => (
           <div className="table-container">
             <h2 className="table-title">{character.name}</h2>
-            <table>
-              <thead>
-                <tr>
-                  <th>Films</th>
-                  <th>Vehicle Models</th>
-                </tr>
-              </thead>
-              <tbody>
-                {Array.from({
-                  length: Math.max(
-                    character.films.length,
-                    character.vehicles.length
-                  ),
-                }).map((_, index) => (
-                  <tr key={index}>
-                    <td>
-                      {index < character.films.length
-                        ? character.films[index]
-                        : "N/A"}
-                    </td>
-                    <td>
-                      {index < character.vehicles.length
-                        ? character.vehicles[index]
-                        : "N/A"}
-                    </td>
+            <div className="table-row">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Films</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {Array.from({
+                    length: character.films.length,
+                  }).map((_, index) => (
+                    <tr key={index}>
+                      <td>{character.films[index]}</td>
+                    </tr>
+                  ))}
+                  {character.films.length === 0 ? (
+                    <tr key={0}>
+                      <td>N/A</td>
+                    </tr>
+                  ) : null}
+                </tbody>
+              </table>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Vehicle Models</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {Array.from({
+                    length: character.vehicles.length,
+                  }).map((_, index) => (
+                    <tr key={index}>
+                      <td>{character.vehicles[index]}</td>
+                    </tr>
+                  ))}
+                  {character.vehicles.length === 0 ? (
+                    <tr key={0}>
+                      <td>N/A</td>
+                    </tr>
+                  ) : null}
+                </tbody>
+              </table>
+            </div>
           </div>
         ))
       )}

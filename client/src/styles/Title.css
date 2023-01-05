@@ -1,9 +1,10 @@
 .texth1 {
     font-size: 6rem;
     color: #FFE81F;
-  } 
+}
 
 .home {
     background-color: transparent;
     border: none;
+    cursor: pointer;
 }
